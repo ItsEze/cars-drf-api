@@ -484,7 +484,7 @@ function signUpEachUser(arr){
     for (let i = 0;i < arr.length;i++){
         let uname = i[0]
         let pword = i[0]
-        signUp(uname,pword)
+        signUp(uname, pword)
     }
 }
 
