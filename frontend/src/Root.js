@@ -1,51 +1,60 @@
-import {Outlet, Link} from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 import { AuthContext } from "./context/AuthContext";
 import { useState } from "react";
-import "./Root.css"
+import "./Root.css";
 function Root() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [username, setUsername] = useState("");
+  const [authStatus, setAuthStatus] = useState(false);
+  const [authToken, setAuthToken] = useState("");
   const [signedup, setSignedup] = useState(false);
-  console.log(isLoggedIn);
-  const login = (bool) => {
-    setIsLoggedIn(true);
+  const sharedState = {
+    username,
+    setUsername,
+    authStatus,
+    setAuthStatus,
+    authToken,
+    setAuthToken,
+    signedup,
+    setSignedup,
   };
+  console.log(authToken);
   const logout = () => {
-    setIsLoggedIn(false);
+    setUsername("");
+    setAuthStatus(false);
+    setAuthToken("");
+    setSignedup(false);
     localStorage.removeItem("token");
   };
-  const signup = () => {
-    setSignedup(true);
-  };
-    return (
-<AuthContext.Provider value={{ login, logout, signup }}>
-        <header className="header">
-          <h1>Car Trader</h1>
-  
-          <nav className="nav">
+
+  return (
+    <AuthContext.Provider value={{ sharedState }}>
+      <header className="header">
+        <h1>Rusty But Trusty</h1>
+
+        <nav className="nav">
           <ul className="links">
+            <li> {authStatus ? "Welcome, " + username : ""}</li>
             <li>
-              <Link to='/'>Home</Link>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/dashboard">Dashboard</Link>
+            </li>
+            {authStatus ? (
+              <li>
+                <Link onClick={logout}>Logout</Link>
               </li>
-           <li>
-            <Link to='/dashboard'>Dashboard</Link>
-            </li> 
-           <li>
-            {
-              isLoggedIn ? <Link onClick={logout}>Logout</Link> : ''
-            }
-            </li> 
+            ) : (
+              ""
+            )}
           </ul>
         </nav>
-        </header>
-        <main>
-          <Outlet />
-        </main>
-        
-   
-        </AuthContext.Provider>
+      </header>
+      <main>
+        <Outlet />
+      </main>
+    </AuthContext.Provider>
+  );
+}
 
-    );
-  }
-  
-  export default Root;
-  
+export default Root;
