@@ -1,4 +1,4 @@
-from rest_framework.generics import CreateAPIView, RetrieveAPIView
+from rest_framework.generics import RetrieveUpdateAPIView,CreateAPIView
 from .models import UserProfile
 from rest_framework.response import Response
 from django.contrib.auth.models import User
@@ -15,37 +15,25 @@ class SignupView(CreateAPIView):
             password = serializer.validated_data["password"]
             User.objects.create_user(username=username, password=password)
             
-class ProfileView(RetrieveAPIView):
-    serializer_class = UserProfileSerializer
-    permission_classes = [IsAuthenticated]
-   
-    def get_object(self):
-        try:  
-            user_profile = UserProfile.objects.get(user=self.request.user)
-            return user_profile
-        except UserProfile.DoesNotExist:  
-            return Response({'detail': 'Profile not found.'})
+
         
-class ProfileCreate(CreateAPIView):
+class UserProfileView(RetrieveUpdateAPIView):
     serializer_class = UserProfileSerializer
     permission_classes = [IsAuthenticated]
     
-    def create(self, request):
-        existing_profile_check = UserProfile.objects.filter(user=self.request.user).first()
-        if existing_profile_check:
-            return Response({'detail': 'Profile already exists.'})
-
-        serializer = self.get_serializer(data=request.data)
+    def get(self, request):
+        user_profile = UserProfile.objects.get(user=self.request.user)  
+        serializer = UserProfile(data=request.data)
+        return Response(serializer.data)
+    
+    def update(self, request):
+        user_profile = self.get_object(user=self.request.user)
+        serializer = UserProfileSerializer(user_profile, data=request.data)
         if serializer.is_valid():
-            serializer.save(
-                user=self.request.user,
-                street_name=request.data['street_name'],
-                street_number=request.data['street_number'],
-                zip_code=request.data['zip_code'],
-                city=request.data['city']
-            )
-
-            return Response({'detail': 'Profile created successfully.'})
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors)
+    
     
 
             
