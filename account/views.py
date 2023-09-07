@@ -22,12 +22,13 @@ class UserProfileView(RetrieveUpdateAPIView):
     permission_classes = [IsAuthenticated]
     
     def get(self, request):
-        user_profile = UserProfile.objects.get(user=self.request.user)  
-        serializer = UserProfile(data=request.data)
+        user_profile, created = UserProfile.objects.get_or_create(user=self.request.user)
+        serializer = UserProfileSerializer(user_profile)
         return Response(serializer.data)
-    
-    def update(self, request):
-        user_profile = self.get_object(user=self.request.user)
+    def get_object(self):
+        return UserProfile.objects.get(user=self.request.user)
+    def put(self, request):
+        user_profile = self.get_object()
         serializer = UserProfileSerializer(user_profile, data=request.data)
         if serializer.is_valid():
             serializer.save()
