@@ -18,10 +18,10 @@ class Car(models.Model):
     manufacture_year = models.IntegerField()
     number_of_doors = models.IntegerField()
     mileage = models.IntegerField()
-    car_model = models.ForeignKey(CarModel, on_delete=models.CASCADE, related_name="cars")
+    car_model_id = models.ForeignKey(CarModel, on_delete=models.CASCADE)
     
     def __str__(self):
-        return f"{self.manufacture_year} - {self.car_model.make} - {self.car_model.model} - Reg Number:{self.registration_number}"
+        return f"{self.manufacture_year} - {self.car_model_id.make} - {self.car_model_id.model} - Reg Number:{self.registration_number}"
 
 
 

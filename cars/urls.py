@@ -6,4 +6,5 @@ from .views import AllAdvertisements
 
 urlpatterns = [
     path(''),AllAdvertisements.as_view(),
+    # path('')
 ]
