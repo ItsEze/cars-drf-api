@@ -11,6 +11,8 @@ class CarModel(models.Model):
     make = models.CharField(max_length=30)
     model = models.CharField(max_length=25)
     
+    def __str__(self):
+        return f"{self.make} - {self.model}"
 # car
 class Car(models.Model):
     number_of_owners = models.IntegerField()
