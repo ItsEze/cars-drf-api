@@ -1,3 +1,6 @@
+
+
+
 car_data = [
 {'number_of_owners': 3, 'registration_number': 'MUWH4675', 'manufacture_year': 2008, 'number_of_doors': 5, 'car_model': CarModel.objects.get(pk=65), 'mileage': 67756},
 {'number_of_owners': 1, 'registration_number': 'VSVW4565', 'manufacture_year': 2014, 'number_of_doors': 3, 'car_model': CarModel.objects.get(pk=61), 'mileage': 6616},
