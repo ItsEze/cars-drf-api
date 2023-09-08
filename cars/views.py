@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework import status
 from .models import Advertisement
 from django.contrib.auth.models import User
-from .serializers import AdvertisementSerializer, AdvertisementPostSerializer
+from .serializers import AdvertisementSerializer
 
 # Create your views here.
 class AllAdvertisements(APIView):
@@ -15,7 +15,7 @@ class AllAdvertisements(APIView):
         return Response(serializer.data)
     
     def post(self, request):
-        serializer = AdvertisementPostSerializer(data=request.data, context={'request': request})
+        serializer = AdvertisementSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
             serializer.save()
             print(serializer.data)
