@@ -1,4 +1,10 @@
+import os
+import django
 
+os.environ.setdefault("DJANGO_SETTINGS_MODULE","cars_api.settings"),
+django.setup(),
+
+from cars.models import CarModel, Car
 
 
 car_data = [
@@ -232,3 +238,8 @@ car_data = [
 {'number_of_owners': 2, 'registration_number': 'UXEB4925', 'manufacture_year': 2009, 'number_of_doors': 4, 'car_model': CarModel.objects.get(pk=51), 'mileage': 74396},
 {'number_of_owners': 1, 'registration_number': 'PJIL9355', 'manufacture_year': 2004, 'number_of_doors': 5, 'car_model': CarModel.objects.get(pk=20), 'mileage': 83781}
 ]
+
+for data in car_data:
+    Car.objects.create(**data),
+
+print("Cars has been successfully added to the database!")

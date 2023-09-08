@@ -37,5 +37,28 @@ class AdvertisementSerializer(serializers.ModelSerializer):
 
    class Meta:
       model = Advertisement
-      fields = ('pk', 'advertisement_date', 'seller_account', 'car')
-      
+      fields = ('advertisement_date', 'seller_account', 'car')
+
+class AdvertisementPostSerializer(serializers.ModelSerializer):
+   seller_account = UserSerializer(read_only=True)
+   car = CarSerializer()
+
+   class Meta:
+      model = Advertisement
+      fields = ('advertisement_date', 'car', 'seller_account')
+
+   def create(self, validated_data):
+
+      seller = self.context['request'].user
+
+      cars_data = validated_data.pop('car')
+      car_model_data = cars_data.pop('car_model')
+     
+      car_model, created = CarModel.objects.get_or_create(**car_model_data)
+
+      car = Car.objects.create(car_model=car_model, **cars_data)
+
+      advertisement = Advertisement.objects.create(car=car, seller_account=seller, **validated_data)
+
+
+      return advertisement

@@ -1,3 +1,17 @@
+import os
+import django
+
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE","cars_api.settings"),
+django.setup(),
+
+from account.models import UserProfile
+from django.contrib.auth.models import User
+
+
+
+
+
 user_profile_data =[
 {'user': User.objects.get(pk=35), 'street_name': 'Hamilton street', 'street_number': 14, 'zip_code': 70116, 'city': 'New Orleans'},
 {'user': User.objects.get(pk=429), 'street_name': 'Lane avenue', 'street_number': 23, 'zip_code': 48116, 'city': 'Brighton'},
@@ -24,33 +38,33 @@ user_profile_data =[
 {'user': User.objects.get(pk=353), 'street_name': 'Spartanburg avenue', 'street_number': 45, 'zip_code': 75062, 'city': 'Irving'},
 {'user': User.objects.get(pk=160), 'street_name': 'Carroll avenue', 'street_number': 42, 'zip_code': 12204, 'city': 'Albany'},
 {'user': User.objects.get(pk=180), 'street_name': 'Westchester road', 'street_number': 43, 'zip_code': 8846, 'city': 'Middlesex'},
-{'user': User.objects.get(pk=199), 'street_name': 'New York road', 'street_number': 8, 'zip_code': 54481, 'city': 'Stevens Point'},
+# {'user': User.objects.get(pk=199), 'street_name': 'New York road', 'street_number': 8, 'zip_code': 54481, 'city': 'Stevens Point'},
 {'user': User.objects.get(pk=202), 'street_name': 'Alameda street', 'street_number': 5, 'zip_code': 66218, 'city': 'Shawnee'},
-{'user': User.objects.get(pk=148), 'street_name': 'Middlesex avenue', 'street_number': 1, 'zip_code': 21601, 'city': 'Easton'},
-{'user': User.objects.get(pk=16), 'street_name': 'San Francisco road', 'street_number': 28, 'zip_code': 10011, 'city': 'New York'},
+# {'user': User.objects.get(pk=148), 'street_name': 'Middlesex avenue', 'street_number': 1, 'zip_code': 21601, 'city': 'Easton'},
+# {'user': User.objects.get(pk=16), 'street_name': 'San Francisco road', 'street_number': 28, 'zip_code': 10011, 'city': 'New York'},
 {'user': User.objects.get(pk=187), 'street_name': 'Bergen way', 'street_number': 2, 'zip_code': 77301, 'city': 'Conroe'},
 {'user': User.objects.get(pk=457), 'street_name': 'Contra Costa street', 'street_number': 18, 'zip_code': 43215, 'city': 'Columbus'},
 {'user': User.objects.get(pk=223), 'street_name': 'Cook street', 'street_number': 39, 'zip_code': 88011, 'city': 'Las Cruces'},
-{'user': User.objects.get(pk=187), 'street_name': 'Essex street', 'street_number': 21, 'zip_code': 7660, 'city': 'Ridgefield Park'},
+# {'user': User.objects.get(pk=187), 'street_name': 'Essex street', 'street_number': 21, 'zip_code': 7660, 'city': 'Ridgefield Park'},
 {'user': User.objects.get(pk=227), 'street_name': 'Wood street', 'street_number': 45, 'zip_code': 8812, 'city': 'Dunellen'},
 {'user': User.objects.get(pk=16), 'street_name': 'Los Angeles street', 'street_number': 43, 'zip_code': 10025, 'city': 'New York'},
 {'user': User.objects.get(pk=217), 'street_name': 'Citrus avenue', 'street_number': 36, 'zip_code': 70002, 'city': 'Metairie'},
 {'user': User.objects.get(pk=258), 'street_name': 'Santa Clara avenue', 'street_number': 1, 'zip_code': 10011, 'city': 'New York'},
 {'user': User.objects.get(pk=368), 'street_name': 'Luzerne road', 'street_number': 37, 'zip_code': 93012, 'city': 'Camarillo'},
-{'user': User.objects.get(pk=329), 'street_name': 'Hudson road', 'street_number': 49, 'zip_code': 78204, 'city': 'San Antonio'},
-{'user': User.objects.get(pk=51), 'street_name': 'Contra Costa street', 'street_number': 9, 'zip_code': 67410, 'city': 'Abilene'},
+# {'user': User.objects.get(pk=329), 'street_name': 'Hudson road', 'street_number': 49, 'zip_code': 78204, 'city': 'San Antonio'},
+# {'user': User.objects.get(pk=51), 'street_name': 'Contra Costa street', 'street_number': 9, 'zip_code': 67410, 'city': 'Abilene'},
 {'user': User.objects.get(pk=471), 'street_name': 'Somerset avenue', 'street_number': 21, 'zip_code': 97754, 'city': 'Prineville'},
 {'user': User.objects.get(pk=389), 'street_name': 'Suffolk road', 'street_number': 46, 'zip_code': 66204, 'city': 'Overland Park'},
 {'user': User.objects.get(pk=359), 'street_name': 'Ventura way', 'street_number': 22, 'zip_code': 99708, 'city': 'Fairbanks'},
 {'user': User.objects.get(pk=441), 'street_name': 'Washington street', 'street_number': 42, 'zip_code': 99712, 'city': 'Fairbanks'},
 {'user': User.objects.get(pk=245), 'street_name': 'Marion street', 'street_number': 43, 'zip_code': 55343, 'city': 'Hopkins'},
-{'user': User.objects.get(pk=171), 'street_name': 'Burlington street', 'street_number': 47, 'zip_code': 2128, 'city': 'Boston'},
+# {'user': User.objects.get(pk=171), 'street_name': 'Burlington street', 'street_number': 47, 'zip_code': 2128, 'city': 'Boston'},
 {'user': User.objects.get(pk=350), 'street_name': 'Douglas street', 'street_number': 5, 'zip_code': 90006, 'city': 'Los Angeles'},
 {'user': User.objects.get(pk=469), 'street_name': 'Duval avenue', 'street_number': 23, 'zip_code': 53711, 'city': 'Madison'},
 {'user': User.objects.get(pk=214), 'street_name': 'Penobscot avenue', 'street_number': 29, 'zip_code': 19132, 'city': 'Philadelphia'},
 {'user': User.objects.get(pk=300), 'street_name': 'Tarrant road', 'street_number': 29, 'zip_code': 10003, 'city': 'New York'},
 {'user': User.objects.get(pk=470), 'street_name': 'Erie road', 'street_number': 23, 'zip_code': 37388, 'city': 'Tullahoma'},
-{'user': User.objects.get(pk=359), 'street_name': 'Miami-Dade street', 'street_number': 36, 'zip_code': 29201, 'city': 'Columbia'},
+# {'user': User.objects.get(pk=359), 'street_name': 'Miami-Dade street', 'street_number': 36, 'zip_code': 29201, 'city': 'Columbia'},
 {'user': User.objects.get(pk=37), 'street_name': 'New York avenue', 'street_number': 16, 'zip_code': 19087, 'city': 'Wayne'},
 {'user': User.objects.get(pk=239), 'street_name': 'Philadelphia road', 'street_number': 14, 'zip_code': 8822, 'city': 'Flemington'},
 {'user': User.objects.get(pk=322), 'street_name': 'Okaloosa way', 'street_number': 19, 'zip_code': 11590, 'city': 'Westbury'},
@@ -59,7 +73,7 @@ user_profile_data =[
 {'user': User.objects.get(pk=68), 'street_name': 'San Mateo street', 'street_number': 16, 'zip_code': 2909, 'city': 'Providence'},
 {'user': User.objects.get(pk=177), 'street_name': 'Los Angeles street', 'street_number': 22, 'zip_code': 19006, 'city': 'Huntingdon Valley'},
 {'user': User.objects.get(pk=264), 'street_name': 'Philadelphia street', 'street_number': 30, 'zip_code': 2904, 'city': 'Providence'},
-{'user': User.objects.get(pk=376), 'street_name': 'Lafayette avenue', 'street_number': 48, 'zip_code': 8831, 'city': 'Monroe Township'},
+# {'user': User.objects.get(pk=376), 'street_name': 'Lafayette avenue', 'street_number': 48, 'zip_code': 8831, 'city': 'Monroe Township'},
 {'user': User.objects.get(pk=143), 'street_name': 'Wayne avenue', 'street_number': 22, 'zip_code': 78731, 'city': 'Austin'},
 {'user': User.objects.get(pk=384), 'street_name': 'Travis road', 'street_number': 36, 'zip_code': 80126, 'city': 'Littleton'},
 {'user': User.objects.get(pk=185), 'street_name': 'Dallas road', 'street_number': 5, 'zip_code': 53214, 'city': 'Milwaukee'},
@@ -67,7 +81,7 @@ user_profile_data =[
 {'user': User.objects.get(pk=199), 'street_name': 'Chester avenue', 'street_number': 4, 'zip_code': 99515, 'city': 'Anchorage'},
 {'user': User.objects.get(pk=361), 'street_name': 'Philadelphia road', 'street_number': 1, 'zip_code': 16502, 'city': 'Erie'},
 {'user': User.objects.get(pk=87), 'street_name': 'Los Angeles way', 'street_number': 26, 'zip_code': 21061, 'city': 'Glen Burnie'},
-{'user': User.objects.get(pk=57), 'street_name': 'Sonoma street', 'street_number': 12, 'zip_code': 83707, 'city': 'Boise'},
+# {'user': User.objects.get(pk=57), 'street_name': 'Sonoma street', 'street_number': 12, 'zip_code': 83707, 'city': 'Boise'},
 {'user': User.objects.get(pk=170), 'street_name': 'Orange street', 'street_number': 2, 'zip_code': 94104, 'city': 'San Francisco'},
 {'user': User.objects.get(pk=42), 'street_name': 'San Diego street', 'street_number': 29, 'zip_code': 27514, 'city': 'Chapel Hill'},
 {'user': User.objects.get(pk=154), 'street_name': 'Worcester street', 'street_number': 29, 'zip_code': 94070, 'city': 'San Carlos'},
@@ -77,7 +91,7 @@ user_profile_data =[
 {'user': User.objects.get(pk=337), 'street_name': 'Westchester road', 'street_number': 1, 'zip_code': 21215, 'city': 'Baltimore'},
 {'user': User.objects.get(pk=130), 'street_name': 'Dallas road', 'street_number': 14, 'zip_code': 7105, 'city': 'Newark'},
 {'user': User.objects.get(pk=385), 'street_name': 'Harrison street', 'street_number': 29, 'zip_code': 60647, 'city': 'Chicago'},
-{'user': User.objects.get(pk=297), 'street_name': 'Miami-Dade avenue', 'street_number': 15, 'zip_code': 7104, 'city': 'Newark'},
+# {'user': User.objects.get(pk=297), 'street_name': 'Miami-Dade avenue', 'street_number': 15, 'zip_code': 7104, 'city': 'Newark'},
 {'user': User.objects.get(pk=66), 'street_name': 'New York road', 'street_number': 36, 'zip_code': 88101, 'city': 'Clovis'},
 {'user': User.objects.get(pk=46), 'street_name': 'Bergen way', 'street_number': 38, 'zip_code': 10309, 'city': 'Staten Island'},
 {'user': User.objects.get(pk=36), 'street_name': 'Washtenaw street', 'street_number': 21, 'zip_code': 32254, 'city': 'Jacksonville'},
@@ -87,7 +101,7 @@ user_profile_data =[
 {'user': User.objects.get(pk=58), 'street_name': 'Fairfax City street', 'street_number': 12, 'zip_code': 90247, 'city': 'Gardena'},
 {'user': User.objects.get(pk=351), 'street_name': 'Middlesex avenue', 'street_number': 50, 'zip_code': 60201, 'city': 'Evanston'},
 {'user': User.objects.get(pk=270), 'street_name': 'Lucas avenue', 'street_number': 49, 'zip_code': 44302, 'city': 'Akron'},
-{'user': User.objects.get(pk=352), 'street_name': 'Pierce road', 'street_number': 18, 'zip_code': 19106, 'city': 'Philadelphia'},
+# {'user': User.objects.get(pk=352), 'street_name': 'Pierce road', 'street_number': 18, 'zip_code': 19106, 'city': 'Philadelphia'},
 {'user': User.objects.get(pk=253), 'street_name': 'Placer road', 'street_number': 31, 'zip_code': 94010, 'city': 'Burlingame'},
 {'user': User.objects.get(pk=473), 'street_name': 'Fremont street', 'street_number': 25, 'zip_code': 91776, 'city': 'San Gabriel'},
 {'user': User.objects.get(pk=342), 'street_name': 'Knox avenue', 'street_number': 31, 'zip_code': 76708, 'city': 'Waco'},
@@ -95,9 +109,9 @@ user_profile_data =[
 {'user': User.objects.get(pk=410), 'street_name': 'Hillsborough way', 'street_number': 27, 'zip_code': 95110, 'city': 'San Jose'},
 {'user': User.objects.get(pk=211), 'street_name': 'San Diego street', 'street_number': 15, 'zip_code': 94577, 'city': 'San Leandro'},
 {'user': User.objects.get(pk=200), 'street_name': 'Brazos street', 'street_number': 25, 'zip_code': 46202, 'city': 'Indianapolis'},
-{'user': User.objects.get(pk=33), 'street_name': 'Lake street', 'street_number': 14, 'zip_code': 82901, 'city': 'Rock Springs'},
+# {'user': User.objects.get(pk=33), 'street_name': 'Lake street', 'street_number': 14, 'zip_code': 82901, 'city': 'Rock Springs'},
 {'user': User.objects.get(pk=178), 'street_name': 'Atlantic street', 'street_number': 44, 'zip_code': 22102, 'city': 'Mc Lean'},
-{'user': User.objects.get(pk=95), 'street_name': 'Somerset street', 'street_number': 16, 'zip_code': 70112, 'city': 'New Orleans'},
+# {'user': User.objects.get(pk=95), 'street_name': 'Somerset street', 'street_number': 16, 'zip_code': 70112, 'city': 'New Orleans'},
 {'user': User.objects.get(pk=446), 'street_name': 'Saint Louis City avenue', 'street_number': 30, 'zip_code': 94577, 'city': 'San Leandro'},
 {'user': User.objects.get(pk=363), 'street_name': 'San Joaquin road', 'street_number': 36, 'zip_code': 96817, 'city': 'Honolulu'},
 {'user': User.objects.get(pk=392), 'street_name': 'Passaic road', 'street_number': 37, 'zip_code': 55337, 'city': 'Burnsville'},
@@ -108,14 +122,14 @@ user_profile_data =[
 {'user': User.objects.get(pk=260), 'street_name': 'Orange street', 'street_number': 39, 'zip_code': 1602, 'city': 'Worcester'},
 {'user': User.objects.get(pk=118), 'street_name': 'Hennepin street', 'street_number': 48, 'zip_code': 33133, 'city': 'Miami'},
 {'user': User.objects.get(pk=324), 'street_name': 'Sonoma street', 'street_number': 24, 'zip_code': 75149, 'city': 'Mesquite'},
-{'user': User.objects.get(pk=377), 'street_name': 'Cook street', 'street_number': 28, 'zip_code': 37388, 'city': 'Tullahoma'},
+# {'user': User.objects.get(pk=377), 'street_name': 'Cook street', 'street_number': 28, 'zip_code': 37388, 'city': 'Tullahoma'},
 {'user': User.objects.get(pk=284), 'street_name': 'Orange avenue', 'street_number': 25, 'zip_code': 7501, 'city': 'Paterson'},
 {'user': User.objects.get(pk=232), 'street_name': 'Denver avenue', 'street_number': 40, 'zip_code': 33030, 'city': 'Homestead'},
 {'user': User.objects.get(pk=155), 'street_name': 'New Haven road', 'street_number': 17, 'zip_code': 21117, 'city': 'Owings Mills'},
 {'user': User.objects.get(pk=115), 'street_name': 'Snohomish road', 'street_number': 36, 'zip_code': 91362, 'city': 'Thousand Oaks'},
 {'user': User.objects.get(pk=235), 'street_name': 'Cuyahoga street', 'street_number': 12, 'zip_code': 96819, 'city': 'Honolulu'},
 {'user': User.objects.get(pk=57), 'street_name': 'Rockingham avenue', 'street_number': 7, 'zip_code': 31701, 'city': 'Albany'},
-{'user': User.objects.get(pk=37), 'street_name': 'Brevard road', 'street_number': 8, 'zip_code': 2210, 'city': 'Boston'},
+# {'user': User.objects.get(pk=37), 'street_name': 'Brevard road', 'street_number': 8, 'zip_code': 2210, 'city': 'Boston'},
 {'user': User.objects.get(pk=175), 'street_name': 'New York way', 'street_number': 21, 'zip_code': 7601, 'city': 'Hackensack'},
 {'user': User.objects.get(pk=179), 'street_name': 'Orange street', 'street_number': 36, 'zip_code': 94403, 'city': 'San Mateo'},
 {'user': User.objects.get(pk=144), 'street_name': 'Oakland street', 'street_number': 41, 'zip_code': 91761, 'city': 'Ontario'},
@@ -128,7 +142,7 @@ user_profile_data =[
 {'user': User.objects.get(pk=90), 'street_name': 'Bucks road', 'street_number': 3, 'zip_code': 10468, 'city': 'Bronx'},
 {'user': User.objects.get(pk=414), 'street_name': 'Scott street', 'street_number': 36, 'zip_code': 96782, 'city': 'Pearl City'},
 {'user': User.objects.get(pk=431), 'street_name': 'Miami-Dade avenue', 'street_number': 17, 'zip_code': 80231, 'city': 'Denver'},
-{'user': User.objects.get(pk=350), 'street_name': 'Milwaukee road', 'street_number': 3, 'zip_code': 7866, 'city': 'Rockaway'},
+# {'user': User.objects.get(pk=350), 'street_name': 'Milwaukee road', 'street_number': 3, 'zip_code': 7866, 'city': 'Rockaway'},
 {'user': User.objects.get(pk=356), 'street_name': 'Somerset way', 'street_number': 12, 'zip_code': 8201, 'city': 'Absecon'},
 {'user': User.objects.get(pk=27), 'street_name': 'Cass street', 'street_number': 20, 'zip_code': 7062, 'city': 'Plainfield'},
 {'user': User.objects.get(pk=472), 'street_name': 'Carson City street', 'street_number': 31, 'zip_code': 2346, 'city': 'Middleboro'},
@@ -137,11 +151,17 @@ user_profile_data =[
 {'user': User.objects.get(pk=106), 'street_name': 'Wicomico street', 'street_number': 17, 'zip_code': 75227, 'city': 'Dallas'},
 {'user': User.objects.get(pk=376), 'street_name': 'New York avenue', 'street_number': 8, 'zip_code': 60604, 'city': 'Chicago'},
 {'user': User.objects.get(pk=166), 'street_name': 'Randall avenue', 'street_number': 6, 'zip_code': 45840, 'city': 'Findlay'},
-{'user': User.objects.get(pk=179), 'street_name': 'Los Angeles road', 'street_number': 49, 'zip_code': 92501, 'city': 'Riverside'},
+# {'user': User.objects.get(pk=179), 'street_name': 'Los Angeles road', 'street_number': 49, 'zip_code': 92501, 'city': 'Riverside'},
 {'user': User.objects.get(pk=237), 'street_name': 'San Diego road', 'street_number': 5, 'zip_code': 76707, 'city': 'Waco'},
 {'user': User.objects.get(pk=67), 'street_name': 'Fulton street', 'street_number': 33, 'zip_code': 37211, 'city': 'Nashville'},
 {'user': User.objects.get(pk=377), 'street_name': 'Worcester avenue', 'street_number': 13, 'zip_code': 53216, 'city': 'Milwaukee'},
 {'user': User.objects.get(pk=203), 'street_name': 'Berrien road', 'street_number': 3, 'zip_code': 21655, 'city': 'Preston'},
 {'user': User.objects.get(pk=102), 'street_name': 'Essex way', 'street_number': 33, 'zip_code': 75061, 'city': 'Irving'},
 {'user': User.objects.get(pk=51), 'street_name': 'Lafayette street', 'street_number': 48, 'zip_code': 90212, 'city': 'Beverly Hills'},
-{'user': User.objects.get(pk=287), 'street_name': 'Lancaster street', 'street_number': 21, 'zip_code': 11758, 'city': 'Massapequa'}]
+{'user': User.objects.get(pk=287), 'street_name': 'Lancaster street', 'street_number': 21, 'zip_code': 11758, 'city': 'Massapequa'}
+]
+
+for data in user_profile_data:
+    UserProfile.objects.create(**data),
+
+print("user profiles has been successfully added to the database!")

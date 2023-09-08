@@ -1,3 +1,14 @@
+import os
+import django
+
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE","cars_api.settings"),
+django.setup(),
+
+from django.contrib.auth.models import User
+
+
+
 user_data =[
 {'username': 'jbutt@gmail.com', 'password': 'jbutt@gmail.com'},
 {'username': 'josephine_darakjy@darakjy.org', 'password': 'josephine_darakjy@darakjy.org'},
@@ -481,3 +492,11 @@ user_data =[
 {'username': 'flo_bookamer@cox.net', 'password': 'flo.bookamer@cox.net'},
 {'username': 'jbiddy@yahoo.com', 'password': 'jbiddy@yahoo.com'}
 ]
+
+
+for data in user_data:
+    user = User(username=data['username'])
+    user.set_password(data['password'])
+    user.save()
+
+print("users has been successfully added to the database!")
