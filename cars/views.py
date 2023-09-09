@@ -12,6 +12,18 @@ class AllAdvertisements(APIView):
     def get(self,request):
         advertisements = Advertisement.objects.order_by("id")
         serializer = AdvertisementSerializer(advertisements, many=True)
+
+        email = request.GET.get('email')
+        if email:
+            print(email)
+            advertisements = Advertisement.objects.filter(seller_account__username=email)
+            serializer = AdvertisementSerializer(advertisements, many=True)
+            if advertisements.count() > 1:
+                return Response(serializer.data)
+            else:
+                return Response(serializer.data)
+
+
         return Response(serializer.data)
     
     def post(self, request):
@@ -24,18 +36,20 @@ class AllAdvertisements(APIView):
 
 class SelectedAdvertisement(APIView):
 
-    def get_advertisement(self, id):
+    def get_advertisement(self, id, request):
         if type(id) == int:
             return [Advertisement.objects.get(id = id)]
         else:
-            advertisements = Advertisement.objects.filter(seller_account__username=id)
+            email = request.GET.get('email')
+            print(email)
+            advertisements = Advertisement.objects.filter(seller_account__username=email)
             if advertisements.count() > 1:
                 return advertisements
             else:
                 return [advertisements.first()]
 
     def get(self, request, id):
-        advertisements = self.get_advertisement(id)
+        advertisements = self.get_advertisement(id, request)
         serializer = AdvertisementSerializer(advertisements, many=True)
         return Response(serializer.data)
 

@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-#@5nmwqcf!0q^_3(l26fv5$7bv8jewvae1ec)drj!%n#7&pl!_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -93,8 +93,8 @@ DATABASES = {
         "NAME": "cars_db",
         "USER": "postgres",
         "PASSWORD": "postgres",
-        "HOST": "localhost",  
-        "PORT": 5454,
+        "HOST": "db",  
+        "PORT": 5432,
     }
 }
 
