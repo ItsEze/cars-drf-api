@@ -25,6 +25,7 @@ class UserProfileView(RetrieveUpdateAPIView):
         user_profile, created = UserProfile.objects.get_or_create(user=self.request.user)
         serializer = UserProfileSerializer(user_profile)
         return Response(serializer.data)
+    
     def get_object(self):
         return UserProfile.objects.get(user=self.request.user)
     def put(self, request):
