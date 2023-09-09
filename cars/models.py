@@ -30,4 +30,4 @@ class Car(models.Model):
 class Advertisement(models.Model):
     advertisement_date = models.DateField(auto_now=True)
     seller_account = models.ForeignKey(User, on_delete=models.CASCADE)
-    # car = models.ForeignKey(Car, on_delete=models.CASCADE)
+    car = models.ForeignKey(Car, on_delete=models.CASCADE, null=True)

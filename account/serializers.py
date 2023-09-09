@@ -19,7 +19,7 @@ class UserProfileSerializer(ModelSerializer):
         fields = ['street_name', 'street_number', 'zip_code', 'city', 'account_id']
         
     def update(self, instance, validated_data):
-        
+
         instance.street_name = validated_data.get('street_name', instance.street_name)
         instance.street_number = validated_data.get('street_number', instance.street_number)
         instance.zip_code = validated_data.get('zip_code', instance.zip_code)

@@ -21,7 +21,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 class AdvertisementSerializer(serializers.ModelSerializer):
    seller_account = UserSerializer()
-   # car = CarSerializer(required=False)
+   car = CarSerializer(required=False)
    class Meta:
       model = Advertisement
       fields = '__all__'

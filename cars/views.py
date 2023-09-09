@@ -21,14 +21,14 @@ class UserAdvertisements(APIView):
             serializer = AdvertisementSerializer(advertisements, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
 
-    def post(self, request):
-        request.data['seller_account'] = self.request.user
-        serializer = AdvertisementSerializer(data=request.data)
-        if serializer.is_valid(): 
-            serializer.save()
-            print(serializer.data)
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    # def post(self, request):
+    #     request.data['seller_account'] = self.request.user
+    #     serializer = AdvertisementSerializer(data=request.data)
+    #     if serializer.is_valid(): 
+    #         serializer.save()
+    #         print(serializer.data)
+    #         return Response(serializer.data, status=status.HTTP_200_OK)
+    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     # def delete(self, request):
     #     pass
