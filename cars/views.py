@@ -5,6 +5,7 @@ from rest_framework import status
 from .models import Advertisement
 from django.contrib.auth.models import User
 from .serializers import AdvertisementSerializer
+from django.http import Http404
 
 # Create your views here.
 class AllAdvertisements(APIView):
@@ -34,8 +35,10 @@ class AllAdvertisements(APIView):
 class SelectedAdvertisement(APIView):
 
     def get_advertisement(self, id):
-        if type(id) == int:
-            return [Advertisement.objects.get(id = id)]
+        try:
+            return [Advertisement.objects.get(pk=id)]
+        except Advertisement.DoesNotExist:
+            raise Http404("Advertisement does not exist")
         # else:
         #     email = request.GET.get('email')
         #     print(email)
@@ -46,8 +49,18 @@ class SelectedAdvertisement(APIView):
         #         return [advertisements.first()]
 
     def get(self, request, id):
-        advertisements = self.get_advertisement(id)
-        serializer = AdvertisementSerializer(advertisements, many=True)
+        advertisement = self.get_advertisement(id)
+        serializer = AdvertisementSerializer(advertisement, many=True)
         return Response(serializer.data)
+    
+    def delete(self, request, id):
+        advertisement = self.get_advertisement(id)
+        advertisement.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+    def put(self, request, id):
+        print("Ha no updating for you!!!!")
+        pass
+
 
 
