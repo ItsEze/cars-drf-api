@@ -27,6 +27,7 @@ function Profile() {
   };
   useEffect(() => {
     const handleGetProfile = async () => {
+     
       const response = await fetch("http://localhost:8000/accounts/profile", {
         method: "GET",
         headers: {

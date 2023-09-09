@@ -21,6 +21,7 @@ class Car(models.Model):
     number_of_doors = models.IntegerField(default=5)
     mileage = models.IntegerField()
     car_model = models.ForeignKey(CarModel, on_delete=models.CASCADE)
+    user_account = models.ForeignKey(User, on_delete=models.CASCADE)
     
     def __str__(self):
         return f"{self.manufacture_year} - {self.car_model.make} - {self.car_model.model} - Reg Number:{self.registration_number}"
