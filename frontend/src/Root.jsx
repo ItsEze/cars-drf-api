@@ -1,41 +1,49 @@
 
 import { Outlet, Link } from "react-router-dom";
 import './Root.css'
-import { AuthContext } from "./context/AuthContext";
+// import { AuthContext } from "./context/AuthContext";
+import { createContext } from "react";
 import {useState} from 'react'
+import Login from "./components/Login";
 
-function Root() {
-  const [username, setUsername] = useState("");
-  const [authStatus, setAuthStatus] = useState(false);
+export default function Root() {
+  // const [username, setUsername] = useState("");
+  // const [authStatus, setAuthStatus] = useState(false);
   const [authToken, setAuthToken] = useState("");
-  const [signedup, setSignedup] = useState(false);
-  const [formData, setFormData] = useState({username:'',password:''})
-  const sharedState = {
-    username,
-    setUsername,
-    authStatus,
-    setAuthStatus,
-    authToken,
-    setAuthToken,
-    signedup,
-    setSignedup,
-    formData,
-    setFormData,
-    handleToken,
-    handleInputChange,
-  };
-  console.log(authToken);
+  // const [signedup, setSignedup] = useState(false);
+  const [formData, setFormData] = useState({username:'Email',password:'Password'})
+  const [userInfo, setUserInfo] = useState({})
+  const UserContext = createContext()
+  console.log(formData)
+  // const userInfo = {token: authToken, ...formData}
+  // console.log(userInfo)
+  // const sharedState = {
+  //   username,
+  //   setUsername,
+  //   authStatus,
+  //   setAuthStatus,
+  //   authToken,
+  //   setAuthToken,
+  //   signedup,
+  //   setSignedup,
+  //   formData,
+  //   setFormData,
+  //   handleToken,
+  //   handleInputChange,
+  // };
+  // console.log(authToken);
 
-  const logout = () => {
-    setUsername("");
-    setAuthStatus(false);
-    setAuthToken("");
-    setSignedup(false);
-    localStorage.removeItem("token");
-  };
+  // const logout = () => {
+  //   setUsername("");
+  //   setAuthStatus(false);
+  //   setAuthToken("");
+  //   setSignedup(false);
+  //   localStorage.removeItem("token");
+  // };
   
 
   const handleToken = (token) => {
+    // setUserInfo({token: token, username: formData.username})
     setFormData({username: '', password: ''})
     setAuthToken(token)
   }
@@ -48,9 +56,10 @@ function Root() {
       [name]: value,
     });
   };
+  
   return (
-    <AuthContext.Provider value={{ sharedState }}>
-        <header>
+    <UserContext.Provider value={{ userInfo }}>
+        {/* <header>
         <h1>Cars frontend</h1>
         <nav>
           <ul>
@@ -62,10 +71,16 @@ function Root() {
               </li>
           </ul>
         </nav>
-      </header>
+      </header> */}
+      <>
+      <div className='Page'>
+      <Login handleInputChange={handleInputChange} formData={formData} handleToken={handleToken}/>
+      </div>
+      </>
+
       <div id="detail"><Outlet/></div>
-      </AuthContext.Provider>
+      </UserContext.Provider>
   )
 }
 
-export default Root
+

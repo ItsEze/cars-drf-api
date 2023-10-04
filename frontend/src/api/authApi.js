@@ -1,3 +1,11 @@
+import { useContext } from 'react';
+// import UserContext from '../contexts/UserContext';
+
+// const userToken = useContext(UserContext)
+// console.log(userToken)
+
+
+
 async function basicFetch(url, payload) {
     const res = await fetch(url, payload)
     const body = await res.json()
@@ -29,14 +37,17 @@ async function basicFetch(url, payload) {
     return body.token
   }
 
-  export async function IndivAds(context) {
-      const payload = {
-        method: "GET",
-        headers: {"Content-Type": "application/json"},
-        body:JSON.stringify(context)  
+  // export async function IndivAds(token) {
+  //     const payload = {
+  //       method: "GET",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         "Authorization": `token ${token}`
+  //       },
+  //       body:JSON.stringify(context)  
         
-      };
-      const body = await basicFetch("http://localhost:8000/api/v1/advertisements/", payload)
-      return body
+  //     };
+  //     const body = await basicFetch("http://localhost:8000/api/v1/advertisements/", payload)
+  //     return body
   
-    }
+  //   }

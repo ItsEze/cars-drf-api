@@ -1,6 +1,6 @@
-import Form from "../Form";
+import Form from "./ui/Form";
 import { useState } from 'react';
-import { signup } from "../../api/authApi";
+import { signup } from "../api/authApi";
 import {Navigate} from 'react-router-dom';
 
 
@@ -23,7 +23,7 @@ export default function Signup({handleInputChange, formData}) {
   }
 
   if (shouldRedirect) {
-    return <Navigate to="/login"/>
+    return <Navigate to="/Login"/>
   } else {
     return <Form formType={"Signup"} handleInputChange={handleInputChange} formData={formData} handleSubmit={handleSubmit} responseMsg={responseMsg}/>
   }
