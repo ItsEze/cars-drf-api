@@ -1,11 +1,15 @@
 import Form from "./ui/Form";
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { signup } from "../api/authApi";
 import {Navigate} from 'react-router-dom';
+import { AuthContext } from "../context/AuthContext";
 
 
 
-export default function Signup({handleInputChange, formData}) {
+export default function Signup({handleInputChange}) {
+  const sharedState = useContext(AuthContext);
+  const { formData } = sharedState;
+  console.log('signup', formData)
 
   const [responseMsg, setResponseMsg] = useState("")
   const [shouldRedirect, setShouldRedirect] = useState(false)
@@ -23,9 +27,9 @@ export default function Signup({handleInputChange, formData}) {
   }
 
   if (shouldRedirect) {
-    return <Navigate to="/Login"/>
+    return <Navigate to="/"/>
   } else {
-    return <Form formType={"Signup"} handleInputChange={handleInputChange} formData={formData} handleSubmit={handleSubmit} responseMsg={responseMsg}/>
+    return <Form formType={"Signup"} handleInputChange={handleInputChange} handleSubmit={handleSubmit} responseMsg={responseMsg}/>
   }
 
 }

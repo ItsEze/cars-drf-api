@@ -21,11 +21,12 @@ async function basicFetch(url, payload) {
       },
       body: JSON.stringify(context)
     }
-    const body = await basicFetch("http://localhost:8000/accounts/signup",payload)
+    const body = await basicFetch("http://localhost:8000/api/accounts/signup",payload)
     return body
   }
   
   export async function login(context) {
+    console.log('authApi-context', context)
     const payload = {
       method: "POST",
       headers: {
@@ -33,7 +34,7 @@ async function basicFetch(url, payload) {
       },
       body: JSON.stringify(context)
     }
-    const body = await basicFetch("http://localhost:8000/accounts/get-token", payload)
+    const body = await basicFetch("http://localhost:8000/api/accounts/get-token", payload)
     return body.token
   }
 

@@ -1,5 +1,13 @@
 import {useState, useEffect} from 'react'
+import Logout from './components/Logout';
+import { AuthContext } from './context/AuthContext';
+import { Link, useNavigate } from 'react-router-dom';
+import { Navigate } from "react-router-dom"
+import './Root.css'
+
+
 export default function Home () {
+  
     // const [ads, setAds] = useState();
     // console.log(ads);
 
@@ -22,7 +30,13 @@ export default function Home () {
 
 
 return (
-  <></>
+  <>
+  <h1>Home</h1>
+  <Link to='/logout'>
+    <button className='logout-btn'>Logout</button>
+  </Link>
+  {/* <Logout /> */}
+  </>
   // <main>
   //   <h1>Inventory</h1>
   //   {ads ? (
