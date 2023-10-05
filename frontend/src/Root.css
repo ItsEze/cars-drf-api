@@ -120,3 +120,9 @@ body {
   margin-bottom: 10px;
 }
 
+.adContainer {
+  border: 2px solid black;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+

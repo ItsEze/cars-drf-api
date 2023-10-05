@@ -26,7 +26,6 @@ async function basicFetch(url, payload) {
   }
   
   export async function login(context) {
-    console.log('authApi-context', context)
     const payload = {
       method: "POST",
       headers: {
@@ -36,6 +35,20 @@ async function basicFetch(url, payload) {
     }
     const body = await basicFetch("http://localhost:8000/api/accounts/get-token", payload)
     return body.token
+  }
+
+  export async function fetchAdvertisements(authToken) {
+    console.log('token', authToken)
+    const payload = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `token ${authToken}`
+      }
+    }
+    const body = await basicFetch('http://localhost:8000/api/advertisements/', payload)
+    console.log('api', body)
+    return body
   }
 
   // export async function IndivAds(token) {
