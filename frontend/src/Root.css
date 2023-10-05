@@ -126,3 +126,47 @@ body {
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
+.popupContainer {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 7%;
+  right: 42.5%;
+  justify-content: center;
+  align-items: center;
+  border: solid white;
+  gap: 10px;
+  border-radius: 13%;
+  padding: 25px;
+  height: 25vh;
+  background-color: transparent;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 10px rgba(255, 255, 255, .2);
+}
+
+
+.popupContainer select {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  /* appearance: none; Hide the default arrow */
+  /* background-image: url('custom-dropdown-arrow.png'); Custom arrow image */
+  /* background-repeat: no-repeat;
+  background-position: right center; */
+}
+
+/* Styling the options inside .popupContainer select */
+.popupContainer select option {
+  color: black;
+  background-color: white;
+  padding: 5px;
+}
+
+/* Styling the selected option inside .popupContainer select */
+.popupContainer select option:checked {
+  background-color: cornflowerblue;
+  color: white;
+}

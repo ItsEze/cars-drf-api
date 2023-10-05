@@ -47,19 +47,6 @@ function Form({ formType, handleInputChange, handleSubmit, responseMsg }) {
           </div>
           <button type="submit">{formType}</button>
           {formType === 'Login' && 
-        //   <div className="signup-link">
-        //   <p>
-        //     Need an account?{" "}
-        //     <Link to='/Signup'>
-        //       {({ navigate }) => (
-        //         <button onClick={() => navigate('/Signup', { customProp: 'value' })}>
-        //           Sign-Up
-        //         </button>
-        //       )}
-        //       Sign-up
-        //     </Link>
-        //   </p>
-        // </div>
         <div className="signup-link">
         <p>Need an account? <Link to={{pathname: '/Signup', state: customProps}}>Sign-Up</Link></p>
       </div>

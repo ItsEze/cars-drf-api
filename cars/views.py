@@ -20,6 +20,7 @@ class AllAdvertisements(APIView):
             advertisements = Advertisement.objects.filter(seller_account__username=email)
             serializer = AdvertisementSerializer(advertisements, many=True)
             return Response(serializer.data)
+        # https:localhost:8000/api/v1/advertisements/?email={username}
 
 
         return Response(serializer.data)

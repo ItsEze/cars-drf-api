@@ -18,6 +18,7 @@ export default function Login({ handleInputChange, handleToken }) {
     if (!token) {
       setResponseMsg("Error logging in");
     } else {
+      localStorage.setItem("authToken", token);
       handleToken(token);
       setShouldRedirect(true);
     }

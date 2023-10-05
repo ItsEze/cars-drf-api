@@ -13,42 +13,42 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Root />,
-    errorElement: <ErrorPage />,
-    children: [
-      // {index: true, element: <Login />},
-      // {index: true, element: <Form />}
-      /* existing routes **add more children here. anything after '/' */
-    ],
-  },
-  {
-    path: '/login',
-    element: <Login />,
-    errorElement: <ErrorPage />,
-    children: [
-      // {index: true, element: <Form />}
-    ]
-  },
-  {
-    path: '/signup',
-    element: <Signup />,
-    errorElement: <ErrorPage />,
-    children: [
-      // {index: true, element: <Form />}
-    ]
-  },
-  {
-    path: '/form',
-    element: <Form />,
-    errorElement: <ErrorPage />,
-    children: [
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <Root />,
+//     errorElement: <ErrorPage />,
+//     children: [
+//       // {index: true, element: <Login />},
+//       // {index: true, element: <Form />}
+//       /* existing routes **add more children here. anything after '/' */
+//     ],
+//   },
+//   {
+//     path: '/login',
+//     element: <Login />,
+//     errorElement: <ErrorPage />,
+//     children: [
+//       // {index: true, element: <Form />}
+//     ]
+//   },
+//   {
+//     path: '/signup',
+//     element: <Signup />,
+//     errorElement: <ErrorPage />,
+//     children: [
+//       // {index: true, element: <Form />}
+//     ]
+//   },
+//   {
+//     path: '/form',
+//     element: <Form />,
+//     errorElement: <ErrorPage />,
+//     children: [
 
-    ]
-  },
-]);
+//     ]
+//   },
+// ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

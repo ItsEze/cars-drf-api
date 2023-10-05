@@ -47,7 +47,6 @@ async function basicFetch(url, payload) {
       }
     }
     const body = await basicFetch('http://localhost:8000/api/advertisements/', payload)
-    console.log('api', body)
     return body
   }
 

@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Navigate } from "react-router-dom"
 import './Root.css'
 import { fetchAdvertisements } from './api/authApi';
+import Filter from './components/ui/Filter';
 
 
 export default function Home () {
@@ -12,18 +13,17 @@ export default function Home () {
     const [ads, setAds] = useState([]);
 
     const sharedState = useContext(AuthContext);
-    const { authToken } = sharedState;
+    const { authToken, handleToken } = sharedState;
 
     useEffect(() => {
       async function handleAdvertisements() {
         const data = await fetchAdvertisements(authToken)
-        console.log(data[0].car.car_model)
         setAds(data)
       }
       if (authToken) {
         handleAdvertisements()
       }
-        }, [])
+        }, [authToken])
 
 return (
   <div>
@@ -31,9 +31,10 @@ return (
   <Link to='/logout'>
     <button className='logout-btn'>Logout</button>
   </Link>
+  <Filter ads={ads}/>
     <div className='adContainer'>
       {ads.map((ad, index) =>
-      <div>
+      <div key={index}>
       <p>Year: {ad.car.manufacture_year}</p>
       <p>Make: {ad.car.car_model.make}</p>
       <p>Model: {ad.car.car_model.model}</p>

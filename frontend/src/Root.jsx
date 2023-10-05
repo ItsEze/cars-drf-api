@@ -11,17 +11,19 @@ export default function Root() {
   const [formData, setFormData] = useState({ username: '', password: '' });
   const inputRef = useRef(null);
 
+  const handleToken = (token) => {
+    setFormData({ username: '', password: '' });
+    setAuthToken(token);
+  };
+
   const sharedState = {
     formData,
     setFormData,
     authToken,
     setAuthToken,
+    handleToken,
   };
 
-  const handleToken = (token) => {
-    setFormData({ username: '', password: '' });
-    setAuthToken(token);
-  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -34,7 +36,12 @@ export default function Root() {
     }
   };
 
-  console.log('root',formData);
+useEffect(() => {
+  const token = localStorage.getItem('authToken')
+  if (token && !authToken) {
+    handleToken(token)
+  }
+}, [])
 
   return (
     <AuthContext.Provider value={sharedState}>
