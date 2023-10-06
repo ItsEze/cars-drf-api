@@ -5,6 +5,7 @@ import Signup from "./components/Signup";
 import Home from "./Home";
 import { BrowserRouter as Router, Route, Routes, Link, Outlet } from 'react-router-dom';
 import Logout from "./components/Logout";
+import {NextUIProvider} from "@nextui-org/react";
 
 export default function Root() {
   const [authToken, setAuthToken] = useState(null);
@@ -45,6 +46,7 @@ useEffect(() => {
 
   return (
     <AuthContext.Provider value={sharedState}>
+      <NextUIProvider>
       <Router>
         {/* <div className='Page'>
           <Login handleToken={handleToken} handleInputChange={handleInputChange}/>
@@ -56,6 +58,7 @@ useEffect(() => {
           <Route path="/logout" element={<Logout />} />
         </Routes>
       </Router>
+      </NextUIProvider>
       
       {/* <div id="detail"><Outlet/></div> */}
     </AuthContext.Provider>
