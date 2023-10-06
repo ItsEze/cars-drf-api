@@ -9,6 +9,8 @@
 
   ### Features in progress/needed
 - Back arrow on signup to take you to login
+- implement query parameter search front/backend
+- finish advertisement creation screen. 
 
 
 

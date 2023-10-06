@@ -47,20 +47,6 @@ async function basicFetch(url, payload) {
       }
     }
     const body = await basicFetch('http://localhost:8000/api/advertisements/', payload)
+    console.log(body)
     return body
   }
-
-  // export async function IndivAds(token) {
-  //     const payload = {
-  //       method: "GET",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         "Authorization": `token ${token}`
-  //       },
-  //       body:JSON.stringify(context)  
-        
-  //     };
-  //     const body = await basicFetch("http://localhost:8000/api/v1/advertisements/", payload)
-  //     return body
-  
-  //   }

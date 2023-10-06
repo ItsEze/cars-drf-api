@@ -17,8 +17,8 @@ body {
   min-height: 100vh;
   /* background-image: url(./assets/wallpaper.jpg); */
   background-size: cover;
-  /* background: linear-gradient(45deg, gold, gray); */
-  background: radial-gradient(  darkgray, rgb(229, 103, 0));
+  background: linear-gradient(43deg, yellow, black, gold, orange,red, gray);
+  /* background: radial-gradient(  darkgray, rgb(229, 103, 0)); */
 }
 
 .login {
@@ -169,4 +169,41 @@ body {
 .popupContainer select option:checked {
   background-color: cornflowerblue;
   color: white;
+}
+
+.createAdContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.adInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 10px;
+}
+
+.singleInput {
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;  
+  align-items: center;
+  gap: 5px;
+  border: 1px solid white;
+  border-radius: 3%;
+  padding: 9px;
+  color: white;
+}
+
+.singleInput input {
+  padding: 3px;
+  border-radius: 8px;
+}
+
+.create-btn {
+  display: flex;
+
 }

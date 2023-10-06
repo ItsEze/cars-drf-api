@@ -6,6 +6,7 @@ import { Navigate } from "react-router-dom"
 import './Root.css'
 import { fetchAdvertisements } from './api/authApi';
 import Filter from './components/ui/Filter';
+import AppBar from './AppBar';
 
 
 export default function Home () {
@@ -27,6 +28,7 @@ export default function Home () {
 
 return (
   <div>
+    {/* <AppBar /> */}
   <h1>Home</h1>
   <Link to='/logout'>
     <button className='logout-btn'>Logout</button>

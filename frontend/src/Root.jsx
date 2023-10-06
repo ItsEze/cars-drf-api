@@ -5,7 +5,8 @@ import Signup from "./components/Signup";
 import Home from "./Home";
 import { BrowserRouter as Router, Route, Routes, Link, Outlet } from 'react-router-dom';
 import Logout from "./components/Logout";
-import {NextUIProvider} from "@nextui-org/react";
+import CreateAd from "./components/CreateAd";
+// import {NextUIProvider} from "@nextui-org/react";
 
 export default function Root() {
   const [authToken, setAuthToken] = useState(null);
@@ -46,7 +47,7 @@ useEffect(() => {
 
   return (
     <AuthContext.Provider value={sharedState}>
-      <NextUIProvider>
+      {/* <NextUIProvider> */}
       <Router>
         {/* <div className='Page'>
           <Login handleToken={handleToken} handleInputChange={handleInputChange}/>
@@ -55,10 +56,11 @@ useEffect(() => {
           <Route path='/' element={<Login handleToken={handleToken} handleInputChange={handleInputChange}/>}/>
           <Route path='/signup' element={<Signup handleInputChange={handleInputChange} formData={formData} />}/>
           <Route path='/home' element={<Home />}/>
-          <Route path="/logout" element={<Logout />} />
+          <Route path="/logout" element={<Logout />}/>
+          <Route path='/createAd' element={<CreateAd />}/>
         </Routes>
       </Router>
-      </NextUIProvider>
+      {/* </NextUIProvider> */}
       
       {/* <div id="detail"><Outlet/></div> */}
     </AuthContext.Provider>
