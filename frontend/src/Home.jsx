@@ -4,7 +4,6 @@ import { AuthContext } from './context/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
 import { Navigate } from "react-router-dom"
 import './Root.css'
-import { fetchAdvertisements } from './api/authApi';
 import Filter from './components/ui/Filter';
 import AppBar from './AppBar';
 
@@ -16,15 +15,7 @@ export default function Home () {
     const sharedState = useContext(AuthContext);
     const { authToken, handleToken } = sharedState;
 
-    useEffect(() => {
-      async function handleAdvertisements() {
-        const data = await fetchAdvertisements(authToken)
-        setAds(data)
-      }
-      if (authToken) {
-        handleAdvertisements()
-      }
-        }, [authToken])
+    
 
 return (
   <div>
@@ -33,7 +24,7 @@ return (
   <Link to='/logout'>
     <button className='logout-btn'>Logout</button>
   </Link>
-  <Filter ads={ads}/>
+  <Filter ads={ads} setAds={setAds}/>
     <div className='adContainer'>
       {ads.map((ad, index) =>
       <div key={index}>

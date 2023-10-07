@@ -1,47 +1,92 @@
-import React, { useState, useEffect, useRef } from "react";
-import '../../Root.css';
+import React, { useState, useEffect, useRef, useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import { fetchAdvertisements } from "../../api/authApi"; 
 import { AiFillFilter } from 'react-icons/ai'
+import '../../Root.css';
 
-export default function Filter({ ads }) {
+export default function Filter({ ads, setAds }) {
   const [popupOpen, setPopupOpen] = useState(false);
-  const [selectedYear, setSelectedYear] = useState("");
-  const [selectedMake, setSelectedMake] = useState("");
-  const [selectedModel, setSelectedModel] = useState("");
+  const [query, setQuery] = useState('')
+  const [year, setYear] = useState("");
+  const [make, setMake] = useState("");
+  const [model, setModel] = useState("");
 
   const filterRef = useRef(null);
+
+  const sharedState = useContext(AuthContext);
+  const { authToken, handleToken } = sharedState;
 
   const handlePopup = () => {
     setPopupOpen(!popupOpen);
   };
 
   const handleYear = (event) => {
-    setSelectedYear(event.target.value);
+    setYear(event.target.value);
   };
 
   const handleMake = (event) => {
-    setSelectedMake(event.target.value);
+    setMake(event.target.value);
   };
 
   const handleModel = (event) => {
-    setSelectedModel(event.target.value);
+    setModel(event.target.value);
   };
 
+  const handleFilterChange = (event) => {
+    const { name, value } = event.target;
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      [name]: value,
+    }));
+  };
+
+  const formQuery = () => {
+      const queryParams = [];
+    
+      if (year) {
+        queryParams.push(`year=${year}`);
+      }
+      if (make) {
+        queryParams.push(`make=${make}`);
+      }
+      if (model) {
+        queryParams.push(`model=${model}`);
+      }
+    
+      const queryString = queryParams.join('&');
+      return queryString ? `?${queryString}` : ''
+    };
+  
   useEffect(() => {
-    // Function to close the filter when clicking outside of it
+    
+    async function handleAdvertisements() {
+      const queryUrl = formQuery()
+      const data = await fetchAdvertisements(authToken, queryUrl)
+      setAds(data)
+      console.log(ads)
+    }
+    if (authToken) {
+      handleAdvertisements()
+    }
+      }, [authToken, year, make, model])
+
+  useEffect(() => {
     const handleClickOutside = (event) => {
       if (filterRef.current && !filterRef.current.contains(event.target)) {
         setPopupOpen(false);
       }
     };
 
-    // Add the event listener to the document
     document.addEventListener("mousedown", handleClickOutside);
 
-    // Cleanup the event listener when the component unmounts
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  const uniqueYears = Array.from(new Set(ads.map((ad) => ad.car.manufacture_year))).sort();
+  const uniqueMakes = Array.from(new Set(ads.map((ad) => ad.car.car_model.make))).sort();
+  const uniqueModels = Array.from(new Set(ads.map((ad) => ad.car.car_model.model))).sort();
 
   return (
     <div ref={filterRef}>
@@ -51,29 +96,29 @@ export default function Filter({ ads }) {
       {popupOpen && (
         <div className="popupContainer">
           <h2>Manufacture Year</h2>
-          <select value={selectedYear} onChange={handleYear}>
+          <select value={year} onChange={handleYear}>
             <option value={""}></option>
-            {ads.map((ad, index) => (
-              <option key={index} value={ad.car.manufacture_year}>
-                {ad.car.manufacture_year}
+            {uniqueYears.map((year, index) => (
+              <option key={index} value={year}>
+                {year}
               </option>
             ))}
           </select>
           <h2>Make</h2>
-          <select value={selectedMake} onChange={handleMake}>
+          <select value={make} onChange={handleMake}>
             <option value={""}></option>
-            {ads.map((ad, index) => (
-              <option key={index} value={ad.car.car_model.make}>
-                {ad.car.car_model.make}
+            {uniqueMakes.map((make, index) => (
+              <option key={index} value={make}>
+                {make}
               </option>
             ))}
           </select>
           <h2>Model</h2>
-          <select value={selectedModel} onChange={handleModel}>
+          <select value={model} onChange={handleModel}>
             <option value={""}></option>
-            {ads.map((ad, index) => (
-              <option key={index} value={ad.car.car_model.model}>
-                {ad.car.car_model.model}
+            {uniqueModels.map((model, index) => (
+              <option key={index} value={model}>
+                {model}
               </option>
             ))}
           </select>
@@ -94,8 +139,8 @@ export default function Filter({ ads }) {
 // export default function Filter({ ads }) {
 //     const [popupOpen, setPopupOpen] = useState(!'')
 //     const [selectedYear, setSelectedYear] = useState('')
-//     const [selectedMake, setSelectedMake] = useState('')
-//     const [selectedModel, setSelectedModel] = useState('')
+//     const [make, setMake] = useState('')
+//     const [model, setModel] = useState('')
 
 //     const handlePopup = () => {
 //         setPopupOpen(!popupOpen)
@@ -107,11 +152,11 @@ export default function Filter({ ads }) {
 //     }
 
 //     const handleMake = (event) => {
-//         setSelectedMake(event.target.value)
+//         setMake(event.target.value)
 //     }
 
 //     const handleModel = (event) => {
-//         setSelectedModel(event.target.value)
+//         setModel(event.target.value)
 //     }
 
 //     return (
@@ -131,7 +176,7 @@ export default function Filter({ ads }) {
 //                         ))} 
 //                         </select> 
 //                     <h2>Make</h2>
-//                     <select value={selectedMake} onChange={handleMake}>
+//                     <select value={make} onChange={handleMake}>
 //                         <option value={''}></option>
 //                         {ads.map((ads, index) => (
 //                             <option key={index} value={ads.car.car_model.make}>
@@ -140,7 +185,7 @@ export default function Filter({ ads }) {
 //                         ))} 
 //                         </select> 
 //                     <h2>Model</h2>
-//                     <select value={selectedModel} onChange={handleModel}>
+//                     <select value={model} onChange={handleModel}>
 //                         <option value={''}></option>
 //                         {ads.map((ads, index) => (
 //                             <option key={index} value={ads.car.car_model.model}>

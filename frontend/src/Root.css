@@ -6,6 +6,10 @@
 
 }
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 h2 {
   color: white
   }
@@ -136,12 +140,13 @@ body {
   align-items: center;
   border: solid white;
   gap: 10px;
-  border-radius: 13%;
+  border-radius: 7%;
   padding: 25px;
   height: 25vh;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(10px);
   box-shadow: 0 0 10px rgba(255, 255, 255, .2);
+  height: inherit;
 }
 
 
