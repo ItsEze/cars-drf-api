@@ -4,7 +4,7 @@ import { fetchAdvertisements } from "../../api/authApi";
 import { AiFillFilter } from 'react-icons/ai'
 import '../../Root.css';
 
-export default function Filter({ ads, setAds }) {
+export default function Filter() {
   const [popupOpen, setPopupOpen] = useState(false);
   const [query, setQuery] = useState('')
   const [year, setYear] = useState("");
@@ -14,7 +14,7 @@ export default function Filter({ ads, setAds }) {
   const filterRef = useRef(null);
 
   const sharedState = useContext(AuthContext);
-  const { authToken, handleToken } = sharedState;
+  const { authToken, handleToken, ads, setAds } = sharedState;
 
   const handlePopup = () => {
     setPopupOpen(!popupOpen);
@@ -39,6 +39,12 @@ export default function Filter({ ads, setAds }) {
       [name]: value,
     }));
   };
+
+  const handleFilterClear = () => {
+    setYear('')
+    setMake('')
+    setModel('')
+  }
 
   const formQuery = () => {
       const queryParams = [];
@@ -122,6 +128,7 @@ export default function Filter({ ads, setAds }) {
               </option>
             ))}
           </select>
+          <button className="filterClear" onClick={handleFilterClear}>Clear Filters</button>
         </div>
       )}
     </div>

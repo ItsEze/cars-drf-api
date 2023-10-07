@@ -6,9 +6,9 @@
 
 }
 
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
 h2 {
   color: white
@@ -21,8 +21,9 @@ body {
   min-height: 100vh;
   /* background-image: url(./assets/wallpaper.jpg); */
   background-size: cover;
-  background: linear-gradient(43deg, yellow, black, gold, orange,red, gray);
-  /* background: radial-gradient(  darkgray, rgb(229, 103, 0)); */
+  /* background: linear-gradient(43deg, yellow, black, gold, orange,red, gray); */
+  background: radial-gradient(palevioletred, cyan);
+  color: pi;
 }
 
 .login {
@@ -100,8 +101,8 @@ body {
   font-weight: 600;
 }
 
-.signup-link p Link:hover {
-  text-decoration: underline;
+.link:hover {
+  text-decoration:underline;
 }
 
 .logout-btn {
@@ -163,14 +164,12 @@ body {
   background-position: right center; */
 }
 
-/* Styling the options inside .popupContainer select */
 .popupContainer select option {
   color: black;
   background-color: white;
   padding: 5px;
 }
 
-/* Styling the selected option inside .popupContainer select */
 .popupContainer select option:checked {
   background-color: cornflowerblue;
   color: white;
@@ -183,13 +182,27 @@ body {
   align-items: center;
 }
 
-.adInput {
+.conditionalInput {
   display: flex;
+  flex-direction: column;
+  /* flex-direction: row; */
   justify-content: center;
   align-items: center;
-  gap: 25px;
-  margin-bottom: 10px;
 }
+
+.conditionalInput .adInput {
+  display: flex;
+  direction: row;
+}
+
+.adInput {
+  justify-content: center;
+  align-items: center;
+  gap: 1px;
+  margin-bottom: 1px;
+  margin-top: 1px;  
+  background-color:rgb(255, 255, 255, 0.1);
+} 
 
 .singleInput {
   display: flex; 
@@ -210,5 +223,85 @@ body {
 
 .create-btn {
   display: flex;
+
+}
+
+.filterClear {
+  border: 1px solid white;
+  color: white;
+  border-radius: 1.25rem;
+  padding: .55rem;
+  margin-top: .75rem;
+  background-color: transparent;
+  width: 100%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, .2);
+}
+
+.filterClear:hover {
+  cursor: pointer;
+  color: black;
+  background-color: whitesmoke;
+  border: 1px solid black;
+}
+
+.suggestions {
+  display: flex; 
+  flex-direction: column;
+  position: absolute;
+  background-color: rgba(255, 0255, 0255, 0.95);
+  color: black;
+  transform: translateY(1px);
+  max-height: 30%;
+  overflow: scroll;
+}
+
+.suggestions p {
+  border: 1px solid black;
+  border-bottom: 0px;
+  cursor: pointer;
+  padding: 3px;
+}
+
+
+
+.suggestions p:last-child {
+  border-bottom: 1px black solid;
+}
+
+.popupContainer p  {
+  color: black;
+  background-color: white;
+  padding: 5px;
+}
+
+.suggestions p:hover {
+  background-color: cornflowerblue;
+  color: white;
+}
+
+
+.disabled-input {
+  pointer-events: none; /* Prevents mouse interaction */
+  background-color: gray; /* Sets a gray background color */
+}
+
+.create-btn {
+  display: flex;
+  padding: 1rem;
+  gap: 20px;
+
+}
+
+.create-btn button {
+  border-radius: 3rem;
+  height: 2.6rem;
+  width: 14rem;
+}
+
+.create-btn button:hover {
+  /* border-radius: 3rem;
+  height: 2.6rem;
+  width: 14rem; */
+  background-color: rgba(255, 255, 255, .2);
 
 }

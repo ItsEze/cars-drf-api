@@ -37,13 +37,13 @@ async function basicFetch(url, payload) {
     return body.token
   }
 
-  export async function fetchAdvertisements(authToken, queryUrl) {
+  export async function fetchAdvertisements(authToken, queryUrl='') {
     console.log('token', authToken)
     const payload = {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `token ${authToken}`
+        'Authorization': `token ${authToken}` 
       }
     }
     const body = await basicFetch(`http://localhost:8000/api/advertisements/${queryUrl}`, payload)

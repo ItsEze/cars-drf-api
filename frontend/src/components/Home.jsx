@@ -1,19 +1,18 @@
 import {useState, useEffect, useContext} from 'react'
-import Logout from './components/Logout';
-import { AuthContext } from './context/AuthContext';
+import Logout from './Logout';
+import { AuthContext } from '../context/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
 import { Navigate } from "react-router-dom"
-import './Root.css'
-import Filter from './components/ui/Filter';
-import AppBar from './AppBar';
+  import '../Root.css'
+import Filter from './ui/Filter';
+import AppBar from '../AppBar';
 
 
 export default function Home () {
   
-    const [ads, setAds] = useState([]);
 
     const sharedState = useContext(AuthContext);
-    const { authToken, handleToken } = sharedState;
+    const { authToken, handleToken, ads } = sharedState;
 
     
 
@@ -24,7 +23,7 @@ return (
   <Link to='/logout'>
     <button className='logout-btn'>Logout</button>
   </Link>
-  <Filter ads={ads} setAds={setAds}/>
+  <Filter />
     <div className='adContainer'>
       {ads.map((ad, index) =>
       <div key={index}>

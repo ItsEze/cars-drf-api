@@ -48,7 +48,12 @@ function Form({ formType, handleInputChange, handleSubmit, responseMsg }) {
           <button type="submit">{formType}</button>
           {formType === 'Login' && 
         <div className="signup-link">
-        <p>Need an account? <Link to={{pathname: '/Signup', state: customProps}}>Sign-Up</Link></p>
+        <p>Need an account? <Link className='link' to={{pathname: '/Signup', state: customProps}}>Sign-Up</Link></p>
+      </div>
+          }
+          {formType === 'Signup' && 
+        <div className="signup-link"> 
+        <p>Back to <Link className='link' to={{pathname: '/', state: customProps}}>Login?</Link></p>
       </div>
           }
         </form>

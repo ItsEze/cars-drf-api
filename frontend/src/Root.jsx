@@ -2,7 +2,7 @@ import { AuthContext } from "./context/AuthContext";
 import { useState, useEffect, useRef } from 'react'
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import Home from "./Home";
+import Home from "./components/Home";
 import { BrowserRouter as Router, Route, Routes, Link, Outlet } from 'react-router-dom';
 import Logout from "./components/Logout";
 import CreateAd from "./components/CreateAd";
@@ -11,6 +11,8 @@ import CreateAd from "./components/CreateAd";
 export default function Root() {
   const [authToken, setAuthToken] = useState(null);
   const [formData, setFormData] = useState({ username: '', password: '' });
+  const [ads, setAds] = useState([]);
+
   const inputRef = useRef(null);
 
   const handleToken = (token) => {
@@ -24,6 +26,8 @@ export default function Root() {
     authToken,
     setAuthToken,
     handleToken,
+    ads,
+    setAds
   };
 
 
