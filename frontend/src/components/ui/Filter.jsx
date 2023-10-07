@@ -10,6 +10,7 @@ export default function Filter() {
   const [year, setYear] = useState("");
   const [make, setMake] = useState("");
   const [model, setModel] = useState("");
+  // const [email, setEmail] = useState("");
 
   const filterRef = useRef(null);
 
@@ -92,7 +93,9 @@ export default function Filter() {
 
   const uniqueYears = Array.from(new Set(ads.map((ad) => ad.car.manufacture_year))).sort();
   const uniqueMakes = Array.from(new Set(ads.map((ad) => ad.car.car_model.make))).sort();
+  console.log('UMAKES', uniqueMakes)
   const uniqueModels = Array.from(new Set(ads.map((ad) => ad.car.car_model.model))).sort();
+  console.log('UMODELS', uniqueModels)
 
   return (
     <div ref={filterRef}>

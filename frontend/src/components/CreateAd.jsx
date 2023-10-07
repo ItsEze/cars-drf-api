@@ -15,7 +15,7 @@ export default function CreateAd() {
             <div className='adInput'>
                 <div className='singleInput'>
                     <label>Registration Number</label>
-                    <AutoInput />
+                    <AutoInput exists={exists} setExists={setExists}/>  
                 </div>
                 {exists && (
                 <div className='conditionalInput'>
@@ -36,11 +36,11 @@ export default function CreateAd() {
                     <div className='adInput'>
                         <div className='singleInput'>
                             <label>Milage</label>
-                            <DisabledInput />
+                            <input type='text'></input>
                         </div>
                         <div className='singleInput'>
                             <label>Number of Owners</label>
-                            <DisabledInput />
+                            <input type='text'></input>
                         </div>
                         <div className='singleInput'>
                             <label>Number of doors</label>
@@ -82,34 +82,6 @@ export default function CreateAd() {
             </div>
                 )}
         </div>
-            {/* <div className='adInput'>
-                <div className='singleInput'>
-                    <label>Year</label>
-                    <input type='text'></input>
-                </div>
-                <div className='singleInput'>
-                    <label>Make</label>
-                    <input type='text'></input>
-                </div>
-                <div className='singleInput'>
-                    <label>Model</label>
-                    <input type='text'></input>
-                </div>
-            </div>
-            <div className='adInput'>
-                <div className='singleInput'>
-                    <label>Milage</label>
-                    <input type='text'></input>
-                </div>
-                <div className='singleInput'>
-                    <label>Number of Owners</label>
-                    <input type='text'></input>
-                </div>
-                <div className='singleInput'>
-                    <label>Number of doors</label>
-                    <input type='text'></input>
-                </div>
-            </div> */}
             <div className='create-btn'>
                 <button className='btn'>Cancel</button>
                 <button className='btn'>Create Advertisement</button>

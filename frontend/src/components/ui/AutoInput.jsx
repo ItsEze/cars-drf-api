@@ -4,7 +4,7 @@ import { fetchAdvertisements } from '../../api/authApi';
 
 
 
-export default function AutoInput({ suggestions }) {
+export default function AutoInput({ suggestions, exists, setExists }) {
     
     const [inputText, setInputText] = useState('');
     const [filteredSuggestions, setFilteredSuggestions] = useState([]);

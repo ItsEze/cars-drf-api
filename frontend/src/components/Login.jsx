@@ -19,13 +19,14 @@ export default function Login({ handleInputChange, handleToken }) {
       setResponseMsg("Error logging in");
     } else {
       localStorage.setItem("authToken", token);
+      // setEmail(formData.username)
       handleToken(token);
       setShouldRedirect(true);
     }
   }
 
   if (shouldRedirect) {
-    return <Navigate to="/home"/>
+    return <Navigate to="/MainBody"/>
   } else {
     return <Form key={'Login'} formType={"Login"} handleInputChange={handleInputChange} formData={formData} handleToken={handleToken} handleSubmit={handleSubmit} responseMsg={responseMsg}/>
   }
